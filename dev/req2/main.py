@@ -20,7 +20,10 @@ def main2(word: str, spreadsheet_name: str, order: int):
   ]
   for video_id in video_ids:
     user_info = tiktok.get_video_info(video_id)
-    matrix.append(user_info)
+    if user_info == None:
+      pass
+    else:
+      matrix.append(user_info)
   
   # ['動画リンク', 'アカウントリンク', 'フォロー数', 'フォロワー数', '投稿日', '投稿文章', '音楽', '再生数', 'いいね数', 'コメント数', 'シェア数', '保存数']
   # アカウントリンクからそのユーザーのページに遷移し、フォロー数とフォロワー数を取得する
@@ -40,7 +43,6 @@ def main2(word: str, spreadsheet_name: str, order: int):
 3. Google Spreadsheetに記述する -> spreadsheet.py(完成)
 
 【残タスク】
-・35件以上の動画を取得する方法 (無限スクロール？)
 ・XPATHで指定した要素の子要素を順に取得できるか
 ・各要素から「投稿日」「いいね数」を取得する
 ・ソートし、上位100件ほどを取得する

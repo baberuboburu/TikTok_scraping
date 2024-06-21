@@ -1,4 +1,4 @@
-from tiktokapipy.api import TikTokAPI
+from tiktokapipy.api import TikTokAPI, TikTokAPIError
 
 
 class TikTok():
@@ -7,7 +7,8 @@ class TikTok():
 
 
   def get_video_info(self, video_id):
-    with TikTokAPI() as api:
+    try:
+      with TikTokAPI() as api:
         video = api.video(f'https://m.tiktok.com/v/{video_id}')
 
         # 動画リンク
@@ -33,8 +34,14 @@ class TikTok():
 
         # 音楽
         print('---------- 音楽 ----------')
-        music = video.music.play_url
-        print(music)
+        try:
+          title = video.music.title
+          author = video.music.author_name
+          music = f'楽曲タイトル: {title}\n歌手名      : {author}'
+          print(music)
+        except:
+          music = 'None'
+          print(music)
 
         # 再生数
         print('---------- 再生数 ----------')
@@ -65,5 +72,11 @@ class TikTok():
         user_info = [video_link, create_time, post_sentence, music, play_counts, digg_counts, comment_counts, share_counts, collect_counts]
         # 要件② (followsとfollowersが足りない)
         # user_info = [video_link, account_link, create_time, post_sentence, music, play_counts, digg_counts, comment_counts, share_counts, collect_counts]
-
         return user_info
+    except:
+      user_info = None
+      return user_info
+
+
+# tiktok = TikTok()
+# tiktok.get_video_info(video_id='7284616546209598727')

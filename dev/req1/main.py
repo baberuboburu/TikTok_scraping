@@ -16,15 +16,12 @@ def main1(user_id: str, spreadsheet_name: str):
   ]
   for video_id in video_ids:
     user_info = tiktok.get_video_info(video_id)
-    matrix.append(user_info)
+    if user_info == None:
+      pass
+    else:
+      matrix.append(user_info)
 
   # 取得した動画情報をスプレッドシートに入力する
   spreadsheet = SpreadSheet()
   spreadsheet.write(matrix=matrix, spreadsheet_name=spreadsheet_name, sheet_name=f'@{user_id}')
   spreadsheet.style(spreadsheet_name=spreadsheet_name, sheet_name=f'@{user_id}')
-
-
-
-'''
-完成
-'''
