@@ -28,7 +28,7 @@ class Scr():
     wait = WebDriverWait(driver, 10)
 
     # スクロール量を設定
-    scroll_height = 600  # スクロールする高さのピクセル数
+    scroll_height = 696  # スクロールする高さのピクセル数
     driver.execute_script("window.scrollTo(0, 0)")
 
     # プレイリストを作成しているユーザーとそうでないユーザーでXPATHが異なる

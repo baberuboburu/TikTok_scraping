@@ -34,8 +34,14 @@ class TikTok():
 
         # 音楽
         print('---------- 音楽 ----------')
-        music = video.music.play_url
-        print(music)
+        try:
+          title = video.music.title
+          author = video.music.author_name
+          music = f'楽曲タイトル: {title}\n歌手名      : {author}'
+          print(music)
+        except:
+          music = 'None'
+          print(music)
 
         # 再生数
         print('---------- 再生数 ----------')
@@ -73,5 +79,5 @@ class TikTok():
       return user_info
 
 
-tiktok = TikTok()
-tiktok.search()
+# tiktok = TikTok()
+# tiktok.search()

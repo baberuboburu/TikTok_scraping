@@ -2,11 +2,19 @@ import gspread
 from gspread_formatting import set_column_width, cellFormat, textFormat, color, format_cell_range
 import os
 
+
 dir_path = os.path.dirname(__file__) # 作業フォルダの取得
-gc = gspread.oauth(
-  credentials_filename=os.path.join(dir_path, "../auth/google_secret.json"), # 認証用のJSONファイル
-  authorized_user_filename=os.path.join(dir_path, "../auth/google_authorized_user.json"), # 証明書の出力ファイル
-)
+try:
+  gc = gspread.oauth(
+    credentials_filename=os.path.join(dir_path, "../auth/google_secret.json"), # 認証用のJSONファイル
+    authorized_user_filename=os.path.join(dir_path, "../auth/google_authorized_user.json"), # 証明書の出力ファイル
+  )
+except:
+  os.remove(os.path.join(dir_path, "../auth/google_authorized_user.json"))
+  gc = gspread.oauth(
+    credentials_filename=os.path.join(dir_path, "../auth/google_secret.json"), # 認証用のJSONファイル
+    authorized_user_filename=os.path.join(dir_path, "../auth/google_authorized_user.json"), # 証明書の出力ファイル
+  )
 
 
 class SpreadSheet():
@@ -28,6 +36,16 @@ class SpreadSheet():
   def open_spreadsheet(self, spreadsheet_name):
     spreadsheet = self.gc.open(spreadsheet_name)
     return spreadsheet
+  
+
+  # スプレッドシートを取得する
+  def take_spreadsheet(self, spreadsheet_name):
+    try:
+      spreadsheet = self.open_spreadsheet(spreadsheet_name=spreadsheet_name)
+      return spreadsheet
+    except:
+      spreadsheet = self.create_spreadsheet(spreadsheet_name=spreadsheet_name)
+      return spreadsheet
 
 
   # 新しいシートを作成する
@@ -49,7 +67,7 @@ class SpreadSheet():
 
   # 新しいシートを作成し，そこに書き込む
   def write(self, matrix, spreadsheet_name, sheet_name):
-    spreadsheet = self.open_spreadsheet(spreadsheet_name=spreadsheet_name)
+    spreadsheet = self.take_spreadsheet(spreadsheet_name=spreadsheet_name)
     sheet = self.create_sheet(spreadsheet=spreadsheet, sheet_name=sheet_name)
 
     # matrix変数の大きさに基づいて範囲を設定
@@ -81,8 +99,9 @@ class SpreadSheet():
     
     # 特定の列の横幅を長くする (要件②)    # ここの修正は必要
     set_column_width(sheet, 'A', 400)
-    set_column_width(sheet, 'C', 500)
-    set_column_width(sheet, 'D', 400)
+    set_column_width(sheet, 'B', 400)
+    set_column_width(sheet, 'D', 500)
+    set_column_width(sheet, 'E', 300)
 
     # 1行目のstyleを調整する
     range_notation = 'A1:Z1'

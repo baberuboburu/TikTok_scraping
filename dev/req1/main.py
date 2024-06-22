@@ -7,7 +7,6 @@ def main1(user_id: str, spreadsheet_name: str):
   # スクレイピング
   scr = Scr()
   video_ids = scr.videoid_from_userid(user_id=user_id)
-  print(len(video_ids))
 
   # 動画IDから動画情報を取得する
   tiktok = TikTok()
