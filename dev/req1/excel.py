@@ -22,9 +22,3 @@ class Excel():
 
     # ファイルに保存
     wb.save(file_name)
-
-# 使用例
-# matrix = [
-#   ['動画リンク', '投稿日', '投稿文章', '音楽', '再生数', 'いいね数', 'コメント数', 'シェア数', '保存数']
-# ]
-# write_matrix_to_excel(matrix, 'example.xlsx')

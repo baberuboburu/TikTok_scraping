@@ -76,7 +76,3 @@ class TikTok():
     except:
       user_info = None
       return user_info
-
-
-# tiktok = TikTok()
-# tiktok.get_video_info(video_id='7284616546209598727')

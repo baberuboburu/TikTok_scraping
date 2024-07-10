@@ -77,7 +77,3 @@ class TikTok():
     except:
       user_info = None
       return user_info
-
-
-# tiktok = TikTok()
-# tiktok.search()

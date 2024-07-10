@@ -115,8 +115,3 @@ class SpreadSheet():
       horizontalAlignment='CENTER'
     )
     format_cell_range(sheet, range_notation, fmt)
-
-
-
-# spreadsheet = SpreadSheet()
-# sheet1 = spreadsheet.style(spreadsheet_name='test01', sheet_name='@mana')

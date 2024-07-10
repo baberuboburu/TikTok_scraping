@@ -122,15 +122,3 @@ class Scr():
     except ValueError as e:
       print(f"Error parsing date: {e}")
       return None
-
-
-
-
-# # テスト
-# word = 'カラオケ'
-
-# scr = Scr()
-# video_ids, diggs, dates = scr.videoid_from_word(word=word)
-# print(video_ids)
-# print(diggs)
-# print(dates)
