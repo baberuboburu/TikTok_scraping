@@ -17,8 +17,8 @@ git clone git@github.com:baberuboburu/TikTok_scraping.git
 ```
     
 ## Google認証ファイルを設置する  
-ダウンロードしたjsonファイルを次の名前に変更してください:
-「google_secret.json」
+ダウンロードしたjsonファイルを次の名前に変更してください:  
+「google_secret.json」  
 このファイルを、TikTok_scraping/dev/authディレクトリに配置してください。
     
 ## 仮想環境に入る
