@@ -45,6 +45,9 @@ requirements.txtに記述されたライブラリをインストールします�
 ```bash
 pip install -r requirements.txt
 ```
+```bash
+playwright install
+```
     
 ## 実行する
 実行するディレクトリ(dev)に移動します。次のコマンドをターミナルに入力してください：
