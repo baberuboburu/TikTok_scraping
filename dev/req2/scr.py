@@ -45,7 +45,7 @@ class Scr():
     video_ids = []
     diggs = []
     dates = []
-    for i in range(1000):
+    for i in range(250):
       try:
         if i % 6 == 0:
           driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
